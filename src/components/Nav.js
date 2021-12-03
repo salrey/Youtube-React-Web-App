@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
+import youtubeLogo from "./youtube.png"
 
 class Nav extends Component {
 
@@ -8,6 +9,7 @@ class Nav extends Component {
         return (
             <header className="Nav">
             <article>
+                <img src={youtubeLogo} alt="youtube-logo" width="100" height="100"/> 
                 <h1>
                 <Link to="/">Youtube</Link>
                 </h1>
