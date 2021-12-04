@@ -16,16 +16,21 @@ class Search extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const { items } = obj
-        // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${this.state.userInput}&type=video&key=process.env.REACT_APP_API_KEY`)
-        // .then(response => response.json())
-        // .then(result => {
-        //     this.setState({result: result})
-        // })
-        // .catch(console.log)
-        if(this.state.userInput){
-            this.setState({result: items})
-        }
+        const { userInput } = this.state
+        // Replace process.env.REACT_APP_API_KEY with process.env.<Your .env variable name>
+        // Your environment variable in the .env file must start with React_APP_<...> = <You Youtube API Key>
+        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${userInput}&type=video&key=${process.env.REACT_APP_API_KEY}`)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result.items)
+            this.setState({result: result.items})
+        })
+        .catch(console.log)
+
+        // const { items } = obj
+        // if(this.state.userInput){
+        //     this.setState({result: items})
+        // }
     }
 
     render(){
@@ -35,10 +40,10 @@ class Search extends Component {
             const { medium, high, default: small } = thumbnails
             return (
                 <div key={etag} name={id.videoId}>
-                    <h3 name='title'>{title}</h3>
                     <img src={medium.url} alt="" />
-                    <p name='time'>0:00</p>
-                    <p name='description'>{description}</p>
+                    <h3 name='title'>{title}</h3>
+                    {/* <p name='time'>0:00</p> */}
+                    {/* <p name='description'>{description}</p> */}
                 </div>
             )
         })
