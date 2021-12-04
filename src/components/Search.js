@@ -18,7 +18,7 @@ class Search extends Component {
         event.preventDefault()
         const { userInput } = this.state
         // Replace process.env.REACT_APP_API_KEY with process.env.<Your .env variable name>
-        // Your environment variable in the .env file must start with React_APP_<...> = <You Youtube API Key>
+        // Your environment variable in the .env file must start with React_APP_<...> = <Your Youtube API Key>
         fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${userInput}&type=video&key=${process.env.REACT_APP_API_KEY}`)
         .then(response => response.json())
         .then(result => {
