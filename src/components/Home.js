@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import './Home.css';
-import Search from 'Search.js'
+import Search from './Search'
 
 class Home extends Component {
     render() {
