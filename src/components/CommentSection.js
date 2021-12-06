@@ -32,10 +32,21 @@ class CommentSection extends React.Component {
 
     render() {
         return (
-            <CommentForm
-                handleChange={this.handleChange}
-                userInput={this.state.userInput}
-                handleSubmit={this.handleSubmit} />
+            <div>
+                <CommentForm
+                    handleChange={this.handleChange}
+                    userInput={this.state.userInput}
+                    handleSubmit={this.handleSubmit} />
+                <ul>{this.state.userComments.map((eachComment, index) => (
+                    <li key={index}>
+                        <ul className="comment-tile">
+                            <b>{eachComment.name}</b>
+                            <p>{eachComment.comment}</p>
+                        </ul>
+                    </li>))}
+                </ul>
+            </div>
+
         )
     }
 }
