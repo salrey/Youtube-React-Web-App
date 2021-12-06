@@ -30,10 +30,11 @@ class Search extends Component {
 
     render(){     
 
-        const videoCard = (this.state.result.length && this.state.result.map((el, i) => {
+        const videoCard = (this.state.result.length && this.state.result.map((el) => {
             const { title, thumbnails} = el.snippet
             const { etag, id } = el
-            const { medium, default: small } = thumbnails
+            console.log(id)
+            const { medium } = thumbnails
             return (
                 <div key={etag} name={id.videoId}>
                     <img src={medium.url} alt="" />

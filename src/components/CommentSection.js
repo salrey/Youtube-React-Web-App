@@ -14,37 +14,35 @@ class CommentSection extends React.Component {
     }
 
     handleChange = (event) => {
-        this.setState(prevState => (
-            {
-                userInput: { ...prevState.userInput, [event.target.name]: event.target.value }
-            }
-        ));
-    }
+        const { userInput } = this.state
+
+        this.setState({
+            userInput: { ...userInput, [event.target.name]: event.target.value }
+        });
+    };
 
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState(prevState => ({
-            userComments: [...prevState.userComments, prevState.userInput],
+        
+        const { userComments, userInput } = this.state;
+
+        this.setState({
+            userComments: [...userComments, userInput],
             userInput: { name: "", comment: "" }
-        }))
+        })
     }
 
     render() {
+        const { userComments, userInput } = this.state;
+
         return (
             <div>
                 <CommentForm
                     handleChange={this.handleChange}
-                    userInput={this.state.userInput}
+                    userInput={userInput}
+                    userComments={userComments}
                     handleSubmit={this.handleSubmit} />
-                <ul>{this.state.userComments.map((eachComment, index) => (
-                    <li key={index}>
-                        <ul className="comment-tile">
-                            <b>{eachComment.name}</b>
-                            <p>{eachComment.comment}</p>
-                        </ul>
-                    </li>))}
-                </ul>
             </div>
 
         )
