@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import data from "./data"
+import './Search.css'
 
 class Search extends Component {
     constructor(){
@@ -53,8 +54,8 @@ class Search extends Component {
                     </Link>
                 </div> 
             )
-        })) || "No search results have been added yet"
-
+        })) || <div className="no-results">"No search results have been added yet"
+</div>
         return(
             <div className="Search">
                 <form onSubmit={this.handleSubmit}>
@@ -64,9 +65,9 @@ class Search extends Component {
                         placeholder="Search..." />
                     <input type="submit" value="Search"  />
                 </form>
-                <div className="results">
+                {/* <div className="results"> */}
                     {videoResults}
-                </div>
+                {/* </div> */}
             </div>
         )
     }
