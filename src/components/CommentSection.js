@@ -1,4 +1,5 @@
 import { Component } from "react";
+import './CommentSection.css'
 
 class CommentSection extends Component {
     constructor() {
@@ -23,7 +24,7 @@ class CommentSection extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        
+
         const { userComments, userInput } = this.state;
 
         userInput.name && userInput.comment && this.setState({
@@ -37,38 +38,40 @@ class CommentSection extends Component {
 
         return (
             <div className="CommentSection">
-                <form onSubmit={this.handleSubmit} >
-                    <label>
-                        Name:
-                        <input 
-                            type="text" 
-                            name="name" 
+                <form onSubmit={this.handleSubmit} className="CommentForm">
+                    <div>
+                        <label for='name'> Name</label>
+                        <input
+                            type="text"
+                            name="name"
                             placeholder="Name..."
-                            value={userInput.name} 
+                            value={userInput.name}
                             onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Comment:
-                        <textarea 
-                            name="comment" 
+                    </div>
+                    <div>
+                        <label for='comment'>Comment</label>
+                        <textarea
+                            name="comment"
                             placeholder="..."
-                            value={userInput.comment} 
+                            value={userInput.comment}
                             onChange={this.handleChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
-                <ul>{userComments.map((eachComment, index) => {
-                    return (
-                        <li key={index}>
-                            <ul className="video-comment">
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit" className='CommentSubmit' />
+                    </div>
+                </form >
+                <hr></hr>
+                {
+                    userComments.map((eachComment, index) => {
+                        return (
+                            <li key={index} className='VideoComments'>
                                 <b>{eachComment.name}</b>
                                 <p>{eachComment.comment}</p>
-                            </ul>
-                        </li>
-                    )
-                })}
-                </ul>
-            </div> 
+                            </li>
+                        )
+                    })
+                }
+            </div >
         )
     }
 }

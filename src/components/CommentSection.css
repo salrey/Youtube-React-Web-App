@@ -1,0 +1,26 @@
+.CommentSection {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column: 2 / 4;
+    /* margin-left:55vh;
+    margin-right:60vh;*/
+    display:block; 
+}
+
+input, textarea {
+    margin: 10px;
+    height:auto;
+    width:50%;
+}
+
+input[type=submit] {
+    background: rgb(55, 124, 254); 
+    width: auto;
+    padding:5px 15px;
+    cursor:pointer;
+    border-radius: 5px;
+}
+
+.VideoComments {
+    list-style: none;
+    padding-inline-start: 0px;
+}
