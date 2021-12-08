@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import YouTube from 'react-youtube';
+import './Video.css'
 import CommentSection from './CommentSection';
 
 class Video extends Component {
@@ -8,23 +9,24 @@ class Video extends Component {
         // access to player in all event handlers via event.target
         event.target.pauseVideo();
     }
-    
+
     render() {
         const opts = {
             height: '390',
             width: '640',
             playerVars: {
-            // https://developers.google.com/youtube/player_parameters
+                // https://developers.google.com/youtube/player_parameters
                 autoplay: 0,
             },
         };
 
         return (
-            <div className="Video">
-                <YouTube 
-                    videoId={this.props.currentID} 
-                    opts={opts} 
+            <div>
+                <YouTube className="Video"
+                    videoId={this.props.currentID}
+                    opts={opts}
                     onReady={this._onReady} />
+                <hr></hr>
                 <CommentSection />
             </div>
         )
