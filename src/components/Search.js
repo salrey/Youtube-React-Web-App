@@ -47,7 +47,7 @@ class Search extends Component {
             const { etag, id } = el
             const { medium } = thumbnails
             return (
-                <div key={etag} name={id.videoId}>
+                <div className="video-card" key={etag} name={id.videoId}>
                     <Link to={`/videos/${id.videoId}`}>
                         <img src={medium.url} alt="" />
                         <h3 name="title">{title}</h3>
