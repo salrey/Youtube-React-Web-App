@@ -1,11 +1,13 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
+import obj from "./data"
 
 class Search extends Component {
     constructor(){
         super()
         this.state = {
             userInput: '',
-            result: []
+            result: [],
         }
     }
 
@@ -16,30 +18,40 @@ class Search extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         const { userInput } = this.state
+        this.setState({result: obj.items})
         // Replace process.env.REACT_APP_API_KEY with process.env.<Your .env variable name>
         // Your environment variable in the .env file must start with React_APP_<...> = <Your Youtube API Key>
         // Then restart npm start in order to update process.env
-        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${userInput}&type=video&key=${process.env.REACT_APP_API_KEY}`)
-        .then(response => response.json())
-        .then(result => {
-            // console.log(result.items)
-            this.setState({result: result.items})
-        })
-        .catch(console.log)
+
+        // ********
+        
+        // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${userInput}&type=video&key=${process.env.REACT_APP_API_KEY}`)
+        // .then(response => response.json())
+        // .then(result => {
+        //     // console.log(result.items)
+        //     this.setState({result: result.items})
+        // })
+        // .catch(console.log)
+
+        event.target.reset();
     }
 
-    render(){     
+    render(){ 
 
-        const videoCard = (this.state.result.length && this.state.result.map((el) => {
+        const videoResults = (this.state.result.length && this.state.result.map((el) => {
             const { title, thumbnails} = el.snippet
             const { etag, id } = el
-            console.log(id)
             const { medium } = thumbnails
             return (
-                <div key={etag} name={id.videoId} onClick={}>
-                    <img src={medium.url} alt="" />
-                    <h3 name='title'>{title}</h3>
+                <div key={etag} name={id.videoId} onClick={this.props.changeID}>
+                    <Link to={`/videos/${id.videoId}`}>
+                        <>
+                            <img src={medium.url} alt="" name={id.videoId} />
+                            <h3 name={id.videoId}>{title}</h3>
+                        </>
+                    </Link>
                 </div>
+                
             )
         })) || "No search results have been added yet"
 
@@ -50,7 +62,7 @@ class Search extends Component {
                     <input type="submit" value="Search"  />
                 </form>
                 <div>
-                    {videoCard}
+                    {videoResults}
                 </div>
             </div>
         )
