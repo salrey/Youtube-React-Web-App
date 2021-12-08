@@ -54,7 +54,7 @@ class Search extends Component {
                     </Link>
                 </div> 
             )
-        })) || <div className="no-results">"No search results have been added yet"
+        })) || <div className="default-message">"No search results have been added yet"
 </div>
         return(
             <div className="Search">
@@ -65,9 +65,7 @@ class Search extends Component {
                         placeholder="Search..." />
                     <input type="submit" value="Search"  />
                 </form>
-                {/* <div className="results"> */}
-                    {videoResults}
-                {/* </div> */}
+                {videoResults}
             </div>
         )
     }

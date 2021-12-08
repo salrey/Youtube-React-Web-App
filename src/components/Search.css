@@ -3,19 +3,19 @@
 	grid-template-columns: repeat(2, 1fr);
 }
 
-form {
+.Search form {
 	grid-column: 1/3;
 	padding: 10px;
 	text-align: center;
 }
 
-div div {
+.Search div div {
 	padding: 10px;
 	margin-top: 20px;
 	text-align: center;
 }
 
-.no-results {
+.Search .default-message {
 	grid-column: 1/3;
 	text-align: center;
 }
