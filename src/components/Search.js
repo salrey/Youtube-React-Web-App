@@ -36,7 +36,7 @@ class Search extends Component {
             console.log(id)
             const { medium } = thumbnails
             return (
-                <div key={etag} name={id.videoId}>
+                <div key={etag} name={id.videoId} onClick={}>
                     <img src={medium.url} alt="" />
                     <h3 name='title'>{title}</h3>
                 </div>

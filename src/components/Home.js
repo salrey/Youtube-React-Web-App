@@ -6,12 +6,13 @@ import YouTube from 'react-youtube';
 
 class Home extends Component {
     render() {
-        return (
-            <div className="Home">
-                <Search />
-                <CommentSection />
-            </div>
-        )
+        // return (
+        //     <div className="Home">
+        //         <Search />
+        //         <CommentSection />
+        //     </div>
+        // )
+        
     }
 }
 
