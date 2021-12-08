@@ -51,8 +51,7 @@ class Search extends Component {
                         <img src={medium.url} alt="" />
                         <h3 name="title">{title}</h3>
                     </Link>
-                </div>
-                
+                </div> 
             )
         })) || "No search results have been added yet"
 
@@ -60,9 +59,9 @@ class Search extends Component {
             <div className="Search">
                 <form onSubmit={this.handleSubmit}>
                     <input 
-                    onChange={this.handleUserInput} 
-                    type="text" 
-                    placeholder="Search..." />
+                        onChange={this.handleUserInput} 
+                        type="text" 
+                        placeholder="Search..." />
                     <input type="submit" value="Search"  />
                 </form>
                 <div className="results">

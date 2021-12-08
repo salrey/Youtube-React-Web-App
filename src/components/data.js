@@ -1,4 +1,4 @@
-const obj = {
+const data = {
     "kind": "youtube#searchListResponse",
     "etag": "6AvdnrWzHbIRAuVwLOEmvLZj3yI",
     "nextPageToken": "CAoQAA",
@@ -351,4 +351,4 @@ const obj = {
     ]
   }
 
-export default obj;
+export default data;

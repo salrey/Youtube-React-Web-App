@@ -20,10 +20,13 @@ class Video extends Component {
         };
 
         return (
-            <>
-                <YouTube videoId={this.props.currentID} opts={opts} onReady={this._onReady} />
+            <div className="Video">
+                <YouTube 
+                    videoId={this.props.currentID} 
+                    opts={opts} 
+                    onReady={this._onReady} />
                 <CommentSection />
-            </>
+            </div>
         )
     }
 }

@@ -4,7 +4,7 @@
     color: white;
     border-bottom: 3px solid black;
     display: flex;
-    padding: 10px 15% 15px;
+    padding: 10px 0% 15px;
   }
   
   .Nav article,
@@ -43,7 +43,7 @@
   .Nav ul li a {
     color: white;
     border-bottom: 2px solid white;
-    font-weight: 500;
+    font-weight: 550;
     padding-bottom: 5px;
     text-decoration: none;
   }

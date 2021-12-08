@@ -6,7 +6,7 @@ class Home extends Component {
     render() {
         return (
             <div className="Home">
-                <Search changeID={this.props.changeID} />
+                <Search />
             </div>
         )
     }

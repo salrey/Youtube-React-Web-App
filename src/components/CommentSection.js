@@ -1,7 +1,6 @@
-import React from "react";
-import CommentForm from "./CommentForm";
+import { Component } from "react";
 
-class CommentSection extends React.Component {
+class CommentSection extends Component {
     constructor() {
         super()
         this.state = {
@@ -27,7 +26,7 @@ class CommentSection extends React.Component {
         
         const { userComments, userInput } = this.state;
 
-        this.setState({
+        userInput.name && userInput.comment && this.setState({
             userComments: [...userComments, userInput],
             userInput: { name: "", comment: "" }
         })
@@ -37,14 +36,39 @@ class CommentSection extends React.Component {
         const { userComments, userInput } = this.state;
 
         return (
-            <div>
-                <CommentForm
-                    handleChange={this.handleChange}
-                    userInput={userInput}
-                    userComments={userComments}
-                    handleSubmit={this.handleSubmit} />
-            </div>
-
+            <div className="CommentSection">
+                <form onSubmit={this.handleSubmit} >
+                    <label>
+                        Name:
+                        <input 
+                            type="text" 
+                            name="name" 
+                            placeholder="Name..."
+                            value={userInput.name} 
+                            onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        Comment:
+                        <textarea 
+                            name="comment" 
+                            placeholder="..."
+                            value={userInput.comment} 
+                            onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+                <ul>{userComments.map((eachComment, index) => {
+                    return (
+                        <li key={index}>
+                            <ul className="video-comment">
+                                <b>{eachComment.name}</b>
+                                <p>{eachComment.comment}</p>
+                            </ul>
+                        </li>
+                    )
+                })}
+                </ul>
+            </div> 
         )
     }
 }

@@ -1,6 +1,6 @@
 import './App.css';
 import { Component } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Nav from "./components/Nav"
 import Home from "./components/Home"
@@ -8,33 +8,24 @@ import About from "./components/About"
 import Video from './components/Video';
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-        currentID: ""
-    }
-  }
-
-  renderVideo = (props) => {
+  
+  renderVideo = props => {
     const { id } = props.match.params;
-    console.log(props)
     return <Video currentID={id} />
   }
   
-  changeID = (event) => {
-    // console.log(event.target.name)
-    this.setState({currentID: event.target.name})
-}
-
   render() {
     return (
       <div className="App">
         <Nav />
-        <Routes> 
-          <Route exact path="//*" element={<Home changeID={this.changeID} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/videos/:id" element={<Video currentID={this.state.currentID}/>} />
-        </Routes>
+        <Switch> 
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          {/* PASS params as props USING react-router-dom V5 */}
+          <Route path="/videos/:id" render={this.renderVideo} />
+          {/* using react-router-dom V6 */}
+          {/* <Route path="/videos/:id" element={<Video currentID={this.state.currentID}/>} /> */}
+        </Switch>
       </div>
     );
   }
