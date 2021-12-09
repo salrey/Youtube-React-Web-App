@@ -1,27 +1,70 @@
 .CommentSection {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-column: 2 / 4;
-    /* margin-left:55vh;
-    margin-right:60vh;*/
     display:block; 
+    text-align: center;
 }
 
-.CommentSection input, textarea {
+hr {
+    margin-top: 5px;
+    border-top: 10px solid red;;
+    border-radius: 5px;
+    border-bottom: 1px dashed red;;
+
+}
+
+.CommentSection input {
     margin: 10px;
-    height:auto;
-    width:50%;
+    height: 25px;
+    width: 50%;
+	border-radius: 5px;
+}
+
+.CommentSection input:focus {
+    background-color: lightgray;
+}
+
+.CommentSection textarea {
+    margin: 10px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 5px;
+    width: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: middle;
+}
+
+.CommentSection textarea:focus {
+    background-color: lightgray;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+  
+:-moz-placeholder {
+    text-align: center;
 }
 
 .CommentSection input[type=submit] {
     background: black; 
     color: white;
     width: auto;
-    padding:5px 15px;
+    line-height: 0px;
+    padding:15px 15px;
     cursor:pointer;
     border-radius: 5px;
+    font-weight: 700;
+}
+
+.CommentSection input[type=submit]:hover {
+    background-color: red;
+    color: white
 }
 
 .VideoComments {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 220px;
     list-style: none;
-    padding-inline-start: 0px;
+    /* padding-inline-start: 0px; */
+    align-items: center;
 }
