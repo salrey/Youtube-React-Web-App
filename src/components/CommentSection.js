@@ -31,6 +31,25 @@ class CommentSection extends Component {
             userComments: [...userComments, userInput],
             userInput: { name: "", comment: "" }
         })
+
+        //Restart npm start to test localStorage
+        const storedComments = localStorage.getItem(this.props.videoId)
+
+        if (storedComments) {
+            localStorage.setItem(this.props.videoId, localStorage.getItem(this.props.videoId) + ", " + `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+        } else {
+            localStorage.setItem(this.props.videoId, `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+        }
+    }
+
+    componentDidMount() {
+        const storedComments = localStorage.getItem(this.props.videoId)
+
+        if (storedComments) {
+            this.setState({
+                userComments: JSON.parse(`[${storedComments}]`),
+            })
+        }
     }
 
     render() {
@@ -40,7 +59,7 @@ class CommentSection extends Component {
             <div className="CommentSection">
                 <form onSubmit={this.handleSubmit} className="CommentForm">
                     <div>
-                        <label for='name'> Name</label>
+                        <label htmlFor='name'> Name</label>
                         <input
                             type="text"
                             name="name"
@@ -49,7 +68,7 @@ class CommentSection extends Component {
                             onChange={this.handleChange} />
                     </div>
                     <div>
-                        <label for='comment'>Comment</label>
+                        <label htmlFor='comment'>Comment</label>
                         <textarea
                             name="comment"
                             placeholder="..."
