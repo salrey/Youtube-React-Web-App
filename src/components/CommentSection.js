@@ -42,6 +42,16 @@ class CommentSection extends Component {
         }
     }
 
+    componentDidMount() {
+        const storedComments = localStorage.getItem(this.props.videoId)
+
+        if (storedComments) {
+            this.setState({
+                userComments: JSON.parse(`[${storedComments}]`),
+            })
+        }
+    }
+
     handleDelete = (event) => {
         event.target.parentNode.remove()
         
