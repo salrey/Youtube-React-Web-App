@@ -31,7 +31,7 @@ class Search extends Component {
         const { regionCode } = this.state
 
         //TESTING 
-        // this.setState({ result: data.items })
+        this.setState({ result: data.items })
 
         // ********
         // Replace process.env.REACT_APP_API_KEY with process.env.<Your .env variable name>
@@ -39,14 +39,14 @@ class Search extends Component {
         // Then restart npm start in order to update process.env
         // ********
 
-        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amountOfVideos}&order=${order}&q=${userInput}&regionCode=${regionCode}&safeSearch=${safeSearch}&type=video&key=${process.env.REACT_APP_API_KEY}`)
-            .then(response => response.json())
-            .then(result => {
-                this.setState({ result: result.items })
-            })
-            .catch(console.log)
+        //     fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amountOfVideos}&order=${order}&q=${userInput}&regionCode=${regionCode}&safeSearch=${safeSearch}&type=video&key=${process.env.REACT_APP_API_KEY}`)
+        //         .then(response => response.json())
+        //         .then(result => {
+        //             this.setState({ result: result.items })
+        //         })
+        //         .catch(console.log)
 
-        event.target.reset();
+        //     event.target.reset();
     }
 
     render() {
