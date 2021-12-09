@@ -54,8 +54,9 @@ class Search extends Component {
                     </Link>
                 </div> 
             )
-        })) || <div className="default-message">"No search results have been added yet"
-</div>
+        })) || (<div className="default-message">
+                    No search results have been added yet
+               </div>)
         return(
             <div className="Search">
                 <form onSubmit={this.handleSubmit}>

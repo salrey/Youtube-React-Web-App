@@ -22,7 +22,8 @@ class Video extends Component {
 
         return (
             <div>
-                <YouTube className="Video"
+                <YouTube 
+                    className="Video"
                     videoId={this.props.currentID}
                     opts={opts}
                     onReady={this._onReady} />
