@@ -8,11 +8,11 @@ class Search extends Component {
         super()
         this.state = {
             userInput: '',
-            amountOfVideos: '',
+            amountOfVideos: 5,
             result: [],
-            order: '',
-            safeSearch: '',
-            regionCode: '',
+            order: 'relevance',
+            safeSearch: 'safeSearchSettingUnspecified',
+            regionCode: 'US',
         }
     }
 
@@ -31,7 +31,7 @@ class Search extends Component {
         const { regionCode } = this.state
 
         //TESTING 
-        this.setState({ result: data.items })
+        // this.setState({ result: data.items })
 
         // ********
         // Replace process.env.REACT_APP_API_KEY with process.env.<Your .env variable name>
@@ -39,18 +39,18 @@ class Search extends Component {
         // Then restart npm start in order to update process.env
         // ********
 
-        //     fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amountOfVideos}&order=${order}&q=${userInput}&regionCode=${regionCode}&safeSearch=${safeSearch}&type=video&key=${process.env.REACT_APP_API_KEY}`)
-        //         .then(response => response.json())
-        //         .then(result => {
-        //             this.setState({ result: result.items })
-        //         })
-        //         .catch(console.log)
+        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amountOfVideos}&order=${order}&q=${userInput}&regionCode=${regionCode}&safeSearch=${safeSearch}&type=video&key=${process.env.REACT_APP_API_KEY}`)
+            .then(response => response.json())
+            .then(result => {
+                this.setState({ result: result.items })
+            })
+            .catch(console.log)
 
-        //     event.target.reset();
+        event.target.reset();
     }
 
     render() {
-        console.log(this.state.result)
+        console.log(this.state)
         const videoResults = (this.state.result.length && this.state.result.map((el) => {
             const { title, thumbnails } = el.snippet
             const { etag, id } = el
@@ -76,6 +76,7 @@ class Search extends Component {
                         placeholder="Search..."
                         name='userInput'
                         onChange={this.handleUserInput}
+                        required
                     />
                     <div>
                         <label for='amountOfVideos'>Amount of Videos (5-10)</label>
@@ -86,6 +87,7 @@ class Search extends Component {
                             max='10'
                             id='amountOfVideos'
                             name='amountOfVideos'
+                            value={this.state.amountOfVideos}
                             onChange={this.handleUserInput}
                         />
                         <label for='order'>Sort By:</label>
@@ -93,9 +95,10 @@ class Search extends Component {
                             className='Order SearchFeatures'
                             name="order"
                             id="order"
+
                             onChange={this.handleUserInput}
                         >
-                            <option value='relevance' selected>Relevance</option>
+                            <option value='relevance'>Relevance</option>
                             <option value='date'>Date</option>
                             <option value='rating'>Rating</option>
                             <option value='title'>Title</option>
@@ -120,6 +123,7 @@ class Search extends Component {
                                 placeholder="Enter 2 Digit Country Code"
                                 name='regionCode'
                                 maxLength='2'
+                                value={this.state.regionCode}
                                 onChange={this.handleUserInput}
                             />
                         </div>
