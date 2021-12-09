@@ -42,24 +42,17 @@ class CommentSection extends Component {
         }
     }
 
-    componentDidMount() {
-        const storedComments = localStorage.getItem(this.props.videoId)
+    handleDelete = (event) => {                
+        const index = event.target.parentNode.id
 
-        if (storedComments) {
-            this.setState({
-                userComments: JSON.parse(`[${storedComments}]`),
-            })
-        }
-    }
-
-    handleDelete = (event) => {
-        event.target.parentNode.remove()
-        
-        console.log(event.target.name)
-
+        this.state.userComments.splice(index, 1)
         this.setState({
-            // userComments: 
+            userComments: this.state.userComments
         })
+
+        // console.log(...this.state.userComments.join(""))
+
+        localStorage.setItem(this.props.videoId, JSON.stringify([...this.state.userComments]))
     }
 
     componentDidMount() {
@@ -108,7 +101,7 @@ class CommentSection extends Component {
                 {
                     userComments.map((eachComment, index) => {
                         return (
-                            <li key={index} name={index} className='VideoComments'>
+                            <li key={index} id={index} className='VideoComments'>
                                 <button onClick={this.handleDelete}>Delete</button>
                                 <b>{eachComment.name}</b>
                                 <p>{eachComment.comment}</p>
