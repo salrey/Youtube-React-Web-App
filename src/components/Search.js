@@ -70,13 +70,17 @@ class Search extends Component {
             <div className="Search">
                 <form onSubmit={this.handleSubmit}>
                     <input
-                        onChange={this.handleUserInput}
+                        className='UserInput'
+                        id='UserInput'
                         type="text"
                         placeholder="Search..."
-                        name='userInput' />
+                        name='userInput'
+                        onChange={this.handleUserInput}
+                    />
                     <div>
                         <label for='amountOfVideos'>Amount of Videos (5-10)</label>
                         <input
+                            className='AmountOfVideos SearchFeatures'
                             type='number'
                             min='5'
                             max='10'
@@ -86,6 +90,7 @@ class Search extends Component {
                         />
                         <label for='order'>Sort By:</label>
                         <select
+                            className='Order SearchFeatures'
                             name="order"
                             id="order"
                             onChange={this.handleUserInput}
@@ -97,6 +102,7 @@ class Search extends Component {
                         </select>
                         <label for='safeSearch'>Safe Search:</label>
                         <select
+                            className='SafeSearch SearchFeatures'
                             name="safeSearch"
                             id="safeSearch"
                             onChange={this.handleUserInput}
@@ -109,7 +115,7 @@ class Search extends Component {
                         <div>
                             <label for='regionCode'>Region Code</label>
                             <input
-                                className='regionCode'
+                                className='RegionCode SearchFeatures'
                                 type="text"
                                 placeholder="Enter 2 Digit Country Code"
                                 name='regionCode'
