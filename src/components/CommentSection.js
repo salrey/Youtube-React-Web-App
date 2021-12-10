@@ -63,10 +63,15 @@ class CommentSection extends Component {
     grabIndex = (event) => {
         const index = event.target.parentNode.id
 
+        const updateName = this.state.userComments[index].name
+        const updateComment = this.state.userComments[index].comment
+
         this.setState({index: index})
         this.setState({
             showSubmit: "hidden",
-            showUpdate: ""
+            showUpdate: "",
+            userInput: { name: updateName, comment: updateComment }
+
         })
     }
 
