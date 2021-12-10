@@ -6,16 +6,35 @@ class LogIn extends React.Component {
         this.state = {
             userName: '',
             password: '',
-            rePassword: ''
+            isLoggedIn: false,
         }
     }
+
+    handleUserInput = (event) => {
+        this.setState({[event.target.name]: event.target.value})
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const {userName, password } = this.state
+        const actualName = localStorage.getItem('userName')
+
+        const actualPass = localStorage.getItem('password')
+        if(userName === actualName && password === actualPass){
+            console.log('ran')
+            this.setState({isLoggedIn: true})
+            localStorage.setItem("isLoggedIn", true)
+        }
+    }
+
     render(){
         return(
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <label htmlFor="userName">User Name: </label>
-                <input name="userName" type="text" />
+                <input onChange={this.handleUserInput} name="userName" type="text" />
                 <label htmlFor="password">Password: </label>
-                <input name="password" type="text" />
+                <input onChange={this.handleUserInput} name="password" type="text" />
+                <input type="submit" />
             </form>
         )
     }

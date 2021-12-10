@@ -10,16 +10,34 @@ class SignUp extends React.Component {
         }
     }
 
+    handleUserInput = (event) => {
+        console.log(event.target.value)
+        this.setState({[event.target.name]: event.target.value})
+    }
+
+    handleSubmit = (event) => {
+        console.log(this.state.password)
+        event.preventDefault()
+        localStorage.setItem("userName", this.state.userName)
+        localStorage.setItem("password", this.state.password)
+    }
+
     render(){
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <label htmlFor="userName">User Name: </label>
-                <input name="userName" type="text" />
+                <input onChange={this.handleUserInput} name="userName" type="text" />
+
                 <label htmlFor="password">Password: </label>
-                <input name="password" type="text" />
+                <input onChange={this.handleUserInput} name="password" type="text" />
+
                 <label htmlFor="rePassword">Re -Password: </label>
-                <input name="rePassword" type="text" />
+                <input onChange={this.handleUserInput} name="rePassword" type="text" />
+
+                <input type="submit" />
             </form>
         )
     }
 }
+
+export default SignUp
