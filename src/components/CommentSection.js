@@ -54,7 +54,11 @@ class CommentSection extends Component {
         })
 
         const str = this.state.userComments.reduce((acc, el) => {
-            return acc + JSON.stringify(el)
+            if(acc.length === 0){
+                return acc + JSON.stringify(el)
+            } else {
+                return acc +","+JSON.stringify(el)
+            }
         }, '')
 
         localStorage.setItem(this.props.videoId, str)
@@ -87,7 +91,11 @@ class CommentSection extends Component {
         })
 
         const str = userComments.reduce((acc, el) => {
-            return acc + JSON.stringify(el)
+            if(acc.length === 0){
+                return acc + JSON.stringify(el)
+            } else {
+                return acc +","+JSON.stringify(el)
+            }
         }, '')
 
         localStorage.setItem(this.props.videoId, str)
