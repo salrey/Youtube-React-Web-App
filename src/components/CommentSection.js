@@ -50,9 +50,12 @@ class CommentSection extends Component {
             userComments: this.state.userComments
         })
 
-        // console.log(...this.state.userComments.join(""))
+        const str = this.state.userComments.reduce((accum, el) => {
+            return accum + JSON.stringify(el)
+        }, '')
+        console.log(str)
 
-        localStorage.setItem(this.props.videoId, JSON.stringify([...this.state.userComments]))
+        localStorage.setItem(this.props.videoId, str)
     }
 
     componentDidMount() {
