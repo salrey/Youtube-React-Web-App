@@ -39,7 +39,7 @@ class CommentSection extends Component {
         const storedComments = localStorage.getItem(this.props.videoId)
 
         if (storedComments) {
-            localStorage.setItem(this.props.videoId, localStorage.getItem(this.props.videoId) + ", " + `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+            localStorage.setItem(this.props.videoId, localStorage.getItem(this.props.videoId) + ", " + {"name": userInput.name, "comment": userInput.comment})
         } else {
             localStorage.setItem(this.props.videoId, `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
         }
@@ -54,7 +54,11 @@ class CommentSection extends Component {
         })
 
         const str = this.state.userComments.reduce((acc, el) => {
-            return acc + JSON.stringify(el)
+            if(acc.length === 0){
+                return acc + JSON.stringify(el)
+            } else {
+                return acc +","+JSON.stringify(el)
+            }
         }, '')
 
         localStorage.setItem(this.props.videoId, str)
@@ -87,7 +91,11 @@ class CommentSection extends Component {
         })
 
         const str = userComments.reduce((acc, el) => {
-            return acc + JSON.stringify(el)
+            if(acc.length === 0){
+                return acc + JSON.stringify(el)
+            } else {
+                return acc +","+JSON.stringify(el)
+            }
         }, '')
 
         localStorage.setItem(this.props.videoId, str)
