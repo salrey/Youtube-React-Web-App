@@ -28,7 +28,7 @@ class Video extends Component {
                     opts={opts}
                     onReady={this._onReady} />
                 <hr></hr>
-                <CommentSection />
+                <CommentSection videoId={this.props.currentID} />
             </div>
         )
     }
