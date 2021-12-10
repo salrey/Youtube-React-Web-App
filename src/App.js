@@ -1,6 +1,8 @@
 import './App.css';
 import { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import LogIn  from './components/LogIn'
+import SignUp  from './components/SignUp'
 
 import Nav from "./components/Nav"
 import Home from "./components/Home"
@@ -20,6 +22,8 @@ class App extends Component {
         <Nav />
         <Switch> 
           <Route exact path="/" component={Home} />
+          <Route path="/login" component={LogIn} />
+          <Route path="/signup" component={SignUp} />
           <Route path="/about" component={About} />
           {/* PASS params as props USING react-router-dom V5 */}
           <Route path="/videos/:id" render={this.renderVideo} />
