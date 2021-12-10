@@ -12,7 +12,7 @@ class Search extends Component {
             result: [],
             order: 'relevance',
             safeSearch: 'safeSearchSettingUnspecified',
-            regionCode: 'US',
+            relevanceLanguage: 'en',
         }
     }
 
@@ -25,13 +25,13 @@ class Search extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         const { userInput } = this.state
-        // const { amountOfVideos } = this.state
-        // const { order } = this.state
-        // const { safeSearch } = this.state
-        // const { regionCode } = this.state
+        const { amountOfVideos } = this.state
+        const { order } = this.state
+        const { safeSearch } = this.state
+        const { relevanceLanguage } = this.state
 
         //TESTING 
-        this.setState({ result: data.items })
+        // this.setState({ result: data.items })
 
         // ********
         // Replace process.env.REACT_APP_API_KEY with process.env.<Your .env variable name>
@@ -39,17 +39,18 @@ class Search extends Component {
         // Then restart npm start in order to update process.env
         // ********
 
-        // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amountOfVideos}&order=${order}&q=${userInput}&regionCode=${regionCode}&safeSearch=${safeSearch}&type=video&key=${process.env.REACT_APP_API_KEY}`)
-        //     .then(response => response.json())
-        //     .then(result => {
-        //         this.setState({ result: result.items })
-        //     })
-        //     .catch(console.log)
+        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amountOfVideos}&order=${order}&q=${userInput}&relevanceLanguage=${relevanceLanguage}&safeSearch=${safeSearch}&type=video&key=${process.env.REACT_APP_API_KEY}`)
+            .then(response => response.json())
+            .then(result => {
+                this.setState({ result: result.items })
+            })
+            .catch(console.log)
 
         event.target.reset();
     }
 
     render() {
+        console.log(this.state.result)
         const videoResults = (this.state.result.length && this.state.result.map((el) => {
             const { title, thumbnails } = el.snippet
             const { etag, id } = el
@@ -114,18 +115,18 @@ class Search extends Component {
                             <option value='moderate'>Moderate</option>
                             <option value='strict'>Strict</option>
                         </select>
-                        <div>
-                            <label for='regionCode'>Region Code</label>
-                            <input
-                                className='RegionCode SearchFeatures'
-                                type="text"
-                                placeholder="Enter 2 Digit Country Code"
-                                name='regionCode'
-                                maxLength='2'
-                                value={this.state.regionCode}
-                                onChange={this.handleUserInput}
-                            />
-                        </div>
+                        <label for='relevanceLanguage'>Language:</label>
+                        <select
+                            className='relevanceLanguage'
+                            name="relevanceLanguage"
+                            id="relevanceLanguage"
+                            onChange={this.handleUserInput}
+                        >
+                            <option value='en'>English</option>
+                            <option value='es'>Spanish</option>
+                            <option value='fr'>French</option>
+                            <option value='ar'>Arabic</option>
+                        </select>
                     </div>
                     <input type="submit" value="Search" />
                 </form>
