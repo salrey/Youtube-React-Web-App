@@ -39,7 +39,7 @@ class CommentSection extends Component {
         const storedComments = localStorage.getItem(this.props.videoId)
 
         if (storedComments) {
-            localStorage.setItem(this.props.videoId, localStorage.getItem(this.props.videoId) + ", " + `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+            localStorage.setItem(this.props.videoId, localStorage.getItem(this.props.videoId) + ", " + {"name": userInput.name, "comment": userInput.comment})
         } else {
             localStorage.setItem(this.props.videoId, `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
         }
