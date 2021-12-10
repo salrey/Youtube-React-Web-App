@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import data from "./data"
+// import data from "./data"
 import './Search.css'
 
 class Search extends Component {
@@ -78,7 +78,7 @@ class Search extends Component {
                         required
                     />
                     <div>
-                        <label for='amountOfVideos'>Amount of Videos (5-10)</label>
+                        <label htmlFor='amountOfVideos'>Amount of Videos (5-10)</label>
                         <input
                             className='AmountOfVideos SearchFeatures'
                             type='number'
@@ -89,7 +89,7 @@ class Search extends Component {
                             value={this.state.amountOfVideos}
                             onChange={this.handleUserInput}
                         />
-                        <label for='order'>Sort By:</label>
+                        <label htmlFor='order'>Sort By:</label>
                         <select
                             className='Order SearchFeatures'
                             name="order"
@@ -102,7 +102,7 @@ class Search extends Component {
                             <option value='rating'>Rating</option>
                             <option value='title'>Title</option>
                         </select>
-                        <label for='safeSearch'>Safe Search:</label>
+                        <label htmlFor='safeSearch'>Safe Search:</label>
                         <select
                             className='SafeSearch SearchFeatures'
                             name="safeSearch"
@@ -114,7 +114,7 @@ class Search extends Component {
                             <option value='moderate'>Moderate</option>
                             <option value='strict'>Strict</option>
                         </select>
-                        <label for='relevanceLanguage'>Language:</label>
+                        <label htmlFor='relevanceLanguage'>Language:</label>
                         <select
                             className='relevanceLanguage'
                             name="relevanceLanguage"
