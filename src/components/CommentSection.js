@@ -10,6 +10,9 @@ class CommentSection extends Component {
                 comment: ''
             },
             userComments: [],
+            index: "",
+            showSubmit: "",
+            showUpdate: "hidden"
         }
     }
 
@@ -50,10 +53,37 @@ class CommentSection extends Component {
             userComments: this.state.userComments
         })
 
-        const str = this.state.userComments.reduce((accum, el) => {
-            return accum + JSON.stringify(el)
+        const str = this.state.userComments.reduce((acc, el) => {
+            return acc + JSON.stringify(el)
         }, '')
-        console.log(str)
+
+        localStorage.setItem(this.props.videoId, str)
+    }
+
+    grabIndex = (event) => {
+        const index = event.target.parentNode.id
+
+        this.setState({index: index})
+        this.setState({
+            showSubmit: "hidden",
+            showUpdate: ""
+        })
+    }
+
+    handleUpdate = () => {
+        const { userComments, userInput, index } = this.state;
+
+        userComments.splice(index, 1, {name: userInput.name, comment: userInput.comment})
+        this.setState({
+            userComments: userComments,
+            showSubmit: "",
+            showUpdate: "hidden",
+            userInput: { name: "", comment: "" }
+        })
+
+        const str = userComments.reduce((acc, el) => {
+            return acc + JSON.stringify(el)
+        }, '')
 
         localStorage.setItem(this.props.videoId, str)
     }
@@ -70,9 +100,7 @@ class CommentSection extends Component {
     
     render() {
         const { userComments, userInput} = this.state;
-        
-        // console.log(userComments)
-        
+            
         return (
             <div className="CommentSection">
                 <form onSubmit={this.handleSubmit} className="CommentForm">
@@ -97,15 +125,20 @@ class CommentSection extends Component {
                             maxLength="100" />
                     </div>
                     <div>
-                        <input type="submit" value="Submit" className='CommentSubmit' />
+                        <input 
+                            type="submit" 
+                            value="Submit" 
+                            className={this.state.showSubmit} />
                     </div>
                 </form >
+                    <button className={this.state.showUpdate} onClick={this.handleUpdate}>Update</button>
                 <hr></hr>
                 {
                     userComments.map((eachComment, index) => {
                         return (
                             <li key={index} id={index} className='VideoComments'>
                                 <button onClick={this.handleDelete}>Delete</button>
+                                <button onClick={this.grabIndex}>Update?</button>
                                 <b>{eachComment.name}</b>
                                 <p>{eachComment.comment}</p>
                             </li>
