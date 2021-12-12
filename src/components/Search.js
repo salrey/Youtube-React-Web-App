@@ -8,7 +8,7 @@ class Search extends Component {
         super()
         this.state = {
             userInput: '',
-            amountOfVideos: 5,
+            amountOfVideos: 6,
             result: [],
             order: 'relevance',
             safeSearch: 'safeSearchSettingUnspecified',
@@ -78,23 +78,23 @@ class Search extends Component {
                         required
                     />
                     <div>
-                        <label htmlFor='amountOfVideos'>Amount of Videos (5-10)</label>
+                        <label htmlFor='amountOfVideos'>Results</label>
                         <input
                             className='AmountOfVideos SearchFeatures'
                             type='number'
-                            min='5'
-                            max='10'
+                            min='6'
+                            max='30'
+                            step='6'
                             id='amountOfVideos'
                             name='amountOfVideos'
                             value={this.state.amountOfVideos}
                             onChange={this.handleUserInput}
                         />
-                        <label htmlFor='order'>Sort By:</label>
+                        <label htmlFor='order'>Sort By</label>
                         <select
                             className='Order SearchFeatures'
                             name="order"
                             id="order"
-
                             onChange={this.handleUserInput}
                         >
                             <option value='relevance'>Relevance</option>
@@ -102,7 +102,7 @@ class Search extends Component {
                             <option value='rating'>Rating</option>
                             <option value='title'>Title</option>
                         </select>
-                        <label htmlFor='safeSearch'>Safe Search:</label>
+                        <label htmlFor='safeSearch'>Safe Search</label>
                         <select
                             className='SafeSearch SearchFeatures'
                             name="safeSearch"
@@ -114,7 +114,7 @@ class Search extends Component {
                             <option value='moderate'>Moderate</option>
                             <option value='strict'>Strict</option>
                         </select>
-                        <label htmlFor='relevanceLanguage'>Language:</label>
+                        <label htmlFor='relevanceLanguage'>Language </label>
                         <select
                             className='relevanceLanguage'
                             name="relevanceLanguage"

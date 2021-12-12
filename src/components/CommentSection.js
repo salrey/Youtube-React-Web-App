@@ -144,7 +144,7 @@ class CommentSection extends Component {
                             className={this.state.showSubmit} />
                     </div>
                 </form >
-                    <button className={this.state.showUpdate} onClick={this.handleUpdate}>Update</button>
+                    <button className={this.state.showUpdate} id="update-button" onClick={this.handleUpdate}>Update</button>
                 <hr></hr>
                 {
                     userComments.map((eachComment, index) => {

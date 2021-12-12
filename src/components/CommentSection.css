@@ -60,6 +60,18 @@ hr {
     color: white
 }
 
+#update-button {
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+#update-button:hover {
+    background-color: red;
+    color: white
+}
+
 .VideoComments {
     display:flex;
     margin-top: 20px;
@@ -69,9 +81,11 @@ hr {
 }
 
 .VideoComments button {
+    margin-left: 10px;
     font-weight: 700;
     padding: 5px;
     border-radius: 5px;
+    cursor:pointer;
 }
 
 .VideoComments button:hover {
