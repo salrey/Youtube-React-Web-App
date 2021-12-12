@@ -11,12 +11,10 @@ class SignUp extends React.Component {
     }
 
     handleUserInput = (event) => {
-        console.log(event.target.value)
         this.setState({[event.target.name]: event.target.value})
     }
 
     handleSubmit = (event) => {
-        console.log(this.state.password)
         event.preventDefault()
         localStorage.setItem("userName", this.state.userName)
         localStorage.setItem("password", this.state.password)

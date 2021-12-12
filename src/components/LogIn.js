@@ -21,7 +21,6 @@ class LogIn extends React.Component {
 
         const actualPass = localStorage.getItem('password')
         if(userName === actualName && password === actualPass){
-            console.log('ran')
             this.setState({isLoggedIn: true})
             localStorage.setItem("isLoggedIn", true)
         }
@@ -32,8 +31,10 @@ class LogIn extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="userName">User Name: </label>
                 <input onChange={this.handleUserInput} name="userName" type="text" />
+
                 <label htmlFor="password">Password: </label>
                 <input onChange={this.handleUserInput} name="password" type="text" />
+                
                 <input type="submit" />
             </form>
         )
