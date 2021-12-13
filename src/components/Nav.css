@@ -1,59 +1,37 @@
 .Nav {
-    align-items: center;
-    background: red;
-    color: white;
-    border-bottom: 3px solid black;
-    display: flex;
-    padding: 10px 0% 15px;
-  }
-  
-  .Nav article,
-  .Nav aside {
-    width: 50%;
-  }
-  
-  .Nav h1 {
-    height: auto;
-    margin: 0;
-    font-size: 36px;
-  }
-  
-  .Nav h1 span {
-    font-size: 24px;
-    font-weight: 300;
-  }
-  
-  .Nav h1 a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .Nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .Nav ul li {
-    display: inline-block;
-    font-family: Arial, Helvetica, sans-serif ;
-    font-size: 18px;
-    padding: 0 25px;
-  }
-  
-  .Nav ul li a {
-    color: white;
-    border-bottom: 2px solid white;
-    font-weight: 550;
-    padding-bottom: 5px;
-    text-decoration: none;
-  }
-  
-  .Nav ul li a:hover {
-    color: black;
-    border-bottom: 2px solid black;
-  }
+  align-items: center;
+  background: #646464;
+  color: white;
+  padding-left: 35px;
+  display: flex;
+  height: 60px;
+}
 
-  .Nav article {
-    display: flex;
-    align-items: center;
-  }
+.Nav aside {
+  top: 5px;
+}
+
+.Nav h1 img {
+  vertical-align: middle;
+}
+
+.Nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Nav ul li {
+  display: inline-block;
+  font-size: 18px;
+  padding: 0 25px;
+}
+
+.Nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.Nav ul li a:hover {
+  color: black;
+  border-bottom: 2px solid black;
+}
