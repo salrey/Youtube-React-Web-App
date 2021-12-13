@@ -1,8 +1,6 @@
 import './App.css';
 import { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import LogIn  from './components/LogIn'
-import SignUp  from './components/SignUp'
 
 import Nav from "./components/Nav"
 import Home from "./components/Home"
@@ -10,20 +8,18 @@ import About from "./components/About"
 import Video from './components/Video';
 
 class App extends Component {
-  
+
   renderVideo = props => {
     const { id } = props.match.params;
     return <Video currentID={id} />
   }
-  
+
   render() {
     return (
       <div className="App">
         <Nav />
-        <Switch> 
+        <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/login" component={LogIn} />
-          <Route path="/signup" component={SignUp} />
           <Route path="/about" component={About} />
           {/* PASS params as props USING react-router-dom V5 */}
           <Route path="/videos/:id" render={this.renderVideo} />
