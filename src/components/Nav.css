@@ -8,6 +8,7 @@
 }
 
 .Nav aside {
+  margin-left: 15px;
   top: 5px;
 }
 
@@ -23,7 +24,7 @@
 .Nav ul li {
   display: inline-block;
   font-size: 18px;
-  padding: 0 25px;
+  padding: 0 15px;
 }
 
 .Nav ul li a {
