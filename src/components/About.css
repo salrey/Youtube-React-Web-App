@@ -1,4 +1,47 @@
 .About {
-    margin: 25px auto;
+    margin: auto;
     width: 70%
+}
+
+.team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 30px
+}
+
+.team h2 {
+    grid-column: span 3;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 400;
+}
+
+.team .profile {
+    display: grid;
+    text-align: center;
+    /* align-self:baseline; */
+    /* background-image: url("./salprofile.jpeg"); */
+    background-color: lightgray; 
+    color:gray;
+    padding: 20px;
+    height: 200px;
+    gap: 20px 0px;
+}
+
+.team .profile:hover {
+    background-color: gray;
+    color: lightgray;
+
+}
+
+.team #name {
+    color: gray;
+}
+
+.team a:link {
+    text-decoration: none;
+}
+
+.team a:link {
+    color: gray;
 }
