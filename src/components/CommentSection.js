@@ -28,20 +28,24 @@ class CommentSection extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        const { userComments, userInput } = this.state;
-
-        userInput.name && userInput.comment && this.setState({
-            userComments: [...userComments, userInput],
-            userInput: { name: "", comment: "" }
-        })
-
-        //Restart npm start to test localStorage
-        const storedComments = localStorage.getItem(this.props.videoId)
-
-        if (storedComments) {
-            localStorage.setItem(this.props.videoId, `${localStorage.getItem(this.props.videoId)}, {"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+        if(localStorage.getItem('isLoggedIn') === "false"){
+            alert("Login in to leave a comment")
         } else {
-            localStorage.setItem(this.props.videoId, `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+            const { userComments, userInput } = this.state;
+
+            userInput.name && userInput.comment && this.setState({
+                userComments: [...userComments, userInput],
+                userInput: { name: "", comment: "" }
+            })
+
+            //Restart npm start to test localStorage
+            const storedComments = localStorage.getItem(this.props.videoId)
+
+            if (storedComments) {
+                localStorage.setItem(this.props.videoId, `${localStorage.getItem(this.props.videoId)}, {"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+            } else {
+                localStorage.setItem(this.props.videoId, `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+            }
         }
     }
 

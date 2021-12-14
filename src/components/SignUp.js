@@ -26,6 +26,8 @@ class SignUp extends React.Component {
         } else {
             localStorage.setItem("users", `"${userName}": "${password}"`)
         }
+
+        event.target.reset()
         
     }
 
