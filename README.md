@@ -6,6 +6,8 @@ Starting with create-react-app and npm to install packages, we create stateful c
 
 Throughout the project, our team collaborates via GitHub to manage the repository, Trello for our ticketing system, as well as Miro and Figma for the application’s flowchart and wireframe, respectively.
 
+Check out our deployed solution [here](https://youtube-react-web-app.netlify.app/)
+
 ### Team Lead
 - [@salrey](https://github.com/salrey)
 
