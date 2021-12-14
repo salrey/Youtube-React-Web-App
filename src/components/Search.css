@@ -50,6 +50,17 @@ input.RegionCode{
 	color: black;
 }
 
+.Search input[type=submit] {
+	margin-left: 5px;
+	background: none;
+	border: none;
+	color:#C4C4C4;
+	font-size: medium;
+}
+.Search input[type=submit]:hover {
+	color: white;
+}
+
 .video-card {
 	padding: 10px;
 	text-align: center;
