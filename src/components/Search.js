@@ -18,6 +18,7 @@ class Search extends Component {
             order: 'relevance',
             safeSearch: 'safeSearchSettingUnspecified',
             relevanceLanguage: 'en',
+            filterOptions: false,
         }
     }
 
@@ -25,6 +26,14 @@ class Search extends Component {
         this.setState({
             [event.target.name]: event.target.value,
         })
+    }
+
+    handleFilterButton = (event) => {
+        event.preventDefault();
+        this.setState({
+            filterOptions: true
+        })
+
     }
 
     handleSubmit = (event) => {
@@ -84,60 +93,67 @@ class Search extends Component {
                         required
                     />
                     <button><img src={searchimg} alt="search-pic" height="16"/></button>
-                    <div>
-                        <label htmlFor='amountOfVideos'>Results</label>
-                        <input
-                            className='AmountOfVideos SearchFeatures'
-                            type='number'
-                            min='6'
-                            max='30'
-                            step='6'
-                            id='amountOfVideos'
-                            name='amountOfVideos'
-                            value={this.state.amountOfVideos}
-                            onChange={this.handleUserInput}
-                        />
-                        <label htmlFor='order'>Sort By</label>
-                        <select
-                            className='Order SearchFeatures'
-                            name="order"
-                            id="order"
-                            onChange={this.handleUserInput}
-                        >
-                            <option value='relevance'>Relevance</option>
-                            <option value='date'>Date</option>
-                            <option value='rating'>Rating</option>
-                            <option value='title'>Title</option>
-                        </select>
-                        <label htmlFor='safeSearch'>Safe Search</label>
-                        <select
-                            className='SafeSearch SearchFeatures'
-                            name="safeSearch"
-                            id="safeSearch"
-                            onChange={this.handleUserInput}
-                        >
-                            <option value='safeSearchSettingUnspecified'>Default</option>
-                            <option value='none'>None</option>
-                            <option value='moderate'>Moderate</option>
-                            <option value='strict'>Strict</option>
-                        </select>
-                        <label htmlFor='relevanceLanguage'>Language </label>
-                        <select
-                            className='relevanceLanguage'
-                            name="relevanceLanguage"
-                            id="relevanceLanguage"
-                            onChange={this.handleUserInput}
-                        >
-                            <option value='en'>English</option>
-                            <option value='es'>Spanish</option>
-                            <option value='fr'>French</option>
-                            <option value='ar'>Arabic</option>
-                        </select>
-                    </div>
+                    
+                    <input type='submit' value='Filter' onClick={this.handleFilterButton} />
+                    {this.state.filterOptions &&
+                        <div className='FilterOptions'>
+                            <label htmlFor='amountOfVideos'>Results</label>
+                            <input
+                                className='AmountOfVideos SearchFeatures'
+                                type='number'
+                                min='6'
+                                max='30'
+                                step='6'
+                                id='amountOfVideos'
+                                name='amountOfVideos'
+                                value={this.state.amountOfVideos}
+                                onChange={this.handleUserInput}
+                            />
+                            <label htmlFor='order'>Sort By</label>
+                            <select
+                                className='Order SearchFeatures'
+                                name="order"
+                                id="order"
+                                onChange={this.handleUserInput}
+                            >
+                                <option value='relevance'>Relevance</option>
+                                <option value='date'>Date</option>
+                                <option value='rating'>Rating</option>
+                                <option value='title'>Title</option>
+                            </select>
+                            <label htmlFor='safeSearch'>Safe Search</label>
+                            <select
+                                className='SafeSearch SearchFeatures'
+                                name="safeSearch"
+                                id="safeSearch"
+                                onChange={this.handleUserInput}
+                            >
+                                <option value='safeSearchSettingUnspecified'>Default</option>
+                                <option value='none'>None</option>
+                                <option value='moderate'>Moderate</option>
+                                <option value='strict'>Strict</option>
+                            </select>
+                            <label htmlFor='relevanceLanguage'>Language</label>
+                            <select
+                                className='relevanceLanguage'
+                                name="relevanceLanguage"
+                                id="relevanceLanguage"
+                                onChange={this.handleUserInput}
+                            >
+                                <option value='en'>English</option>
+                                <option value='es'>Spanish</option>
+                                <option value='fr'>French</option>
+                                <option value='ar'>Arabic</option>
+                            </select>
+                        </div>
+                    }
                 </form>
-                {this.state.result.length <= 0 && <div className="default-message">
+                
+                {this.state.result.length <= 0 && 
+                  <div className="default-message">
                     No search results have been added yet
-                    </div>}
+                  </div>}
+                    
                 {this.state.result.length > 0 ? videoResults : 
                 <>
                     <div className="favorites">
