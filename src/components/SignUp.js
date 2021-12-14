@@ -1,4 +1,6 @@
 import React from 'react'
+import './SignUp.css'
+import { Link, Redirect } from 'react-router-dom';
 
 class SignUp extends React.Component {
     constructor(){
@@ -7,6 +9,7 @@ class SignUp extends React.Component {
             userName: '',
             password: '',
             rePassword: '',
+            // signUp: false,
         }
     }
 
@@ -16,23 +19,35 @@ class SignUp extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        localStorage.setItem("userName", this.state.userName)
-        localStorage.setItem("password", this.state.password)
+        const {userName, password} = this.state
+        // this.setState({signUp: true})
+        if(localStorage.getItem("users")){
+            localStorage.setItem("users", `${localStorage.getItem("users")},"${userName}": "${password}"`)
+        } else {
+            localStorage.setItem("users", `"${userName}": "${password}"`)
+        }
+
+        event.target.reset()
+        
     }
 
     render(){
+        if (this.state.signUp) {
+            return <Redirect to="./Login" />
+          }
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor="userName">User Name: </label>
-                <input onChange={this.handleUserInput} name="userName" type="text" />
+            <form className='Signup-form' onSubmit={this.handleSubmit}>
+                <label className='Signup-Label' htmlFor="userName">User Name </label>
+                <input className='Signup-input' onChange={this.handleUserInput} name="userName" type="text" />
 
-                <label htmlFor="password">Password: </label>
-                <input onChange={this.handleUserInput} name="password" type="text" />
+                <label className='Signup-Label' htmlFor="password">Password </label>
+                <input className='Signup-input' onChange={this.handleUserInput} name="password" type="text" />
 
-                <label htmlFor="rePassword">Re -Password: </label>
-                <input onChange={this.handleUserInput} name="rePassword" type="text" />
+                <label className='Signup-Label' htmlFor="rePassword">Re -Password </label>
+                <input className='Signup-input' onChange={this.handleUserInput} name="rePassword" type="text" />
 
-                <input type="submit" />
+                <input className='Signup-submit' type="submit" />
+                <Link className="Login-to-Signup" to="/login">Login</Link>
             </form>
         )
     }

@@ -28,20 +28,24 @@ class CommentSection extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        const { userComments, userInput } = this.state;
-
-        userInput.name && userInput.comment && this.setState({
-            userComments: [...userComments, userInput],
-            userInput: { name: "", comment: "" }
-        })
-
-        //Restart npm start to test localStorage
-        const storedComments = localStorage.getItem(this.props.videoId)
-
-        if (storedComments) {
-            localStorage.setItem(this.props.videoId, `${localStorage.getItem(this.props.videoId)}, {"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+        if(localStorage.getItem('isLoggedIn') === "false"){
+            alert("Login in to leave a comment")
         } else {
-            localStorage.setItem(this.props.videoId, `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+            const { userComments, userInput } = this.state;
+
+            userInput.name && userInput.comment && this.setState({
+                userComments: [...userComments, userInput],
+                userInput: { name: "", comment: "" }
+            })
+
+            //Restart npm start to test localStorage
+            const storedComments = localStorage.getItem(this.props.videoId)
+
+            if (storedComments) {
+                localStorage.setItem(this.props.videoId, `${localStorage.getItem(this.props.videoId)}, {"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+            } else {
+                localStorage.setItem(this.props.videoId, `{"name": "${userInput.name}", "comment": "${userInput.comment}"}`)
+            }
         }
     }
 
@@ -104,10 +108,17 @@ class CommentSection extends Component {
     componentDidMount() {
         const storedComments = localStorage.getItem(this.props.videoId)
 
+        // console.log(localStorage.getItem("userName"))
+
         if (storedComments) {
             this.setState({
                 userComments: JSON.parse(`[${storedComments}]`),
             })
+        }
+        if(localStorage.getItem("userName")){
+            this.setState({ userInput: { name: localStorage.getItem("userName"),
+            comment: ''
+        }})
         }
     }
     
@@ -117,7 +128,7 @@ class CommentSection extends Component {
         return (
             <div className="CommentSection">
                 <form onSubmit={this.handleSubmit} className="CommentForm">
-                    <div>
+                    {/* <div>
                         <label htmlFor='name'> Username</label>
                         <input
                             type="text"
@@ -127,7 +138,7 @@ class CommentSection extends Component {
                             onChange={this.handleChange}
                             maxLength="10" 
                             required />
-                    </div>
+                    </div> */}
                     <div>
                         <label htmlFor='comment'>Comment</label>
                         <textarea
@@ -145,19 +156,27 @@ class CommentSection extends Component {
                     </div>
                 </form >
                     <button className={this.state.showUpdate} id="update-button" onClick={this.handleUpdate}>Update</button>
-                <hr></hr>
-                {
+                {/* <hr></hr> */}
+                <div className="All-Comments-Area">
+                    {
                     userComments.map((eachComment, index) => {
+                        const showUpdateDelete = eachComment.name === localStorage.getItem("userName")
+                        const deleteButton = showUpdateDelete && <button onClick={this.handleDelete}>Delete</button>
+                        const updateButton = showUpdateDelete && <button onClick={this.grabIndex}>Update?</button>
                         return (
                             <li key={index} id={index} className='VideoComments'>
-                                <button onClick={this.handleDelete}>Delete</button>
-                                <button onClick={this.grabIndex}>Update?</button>
-                                <b>{eachComment.name}</b>
-                                <p>{eachComment.comment}</p>
+                                <p className="Name-Time"><b>{eachComment.name}</b> 2 hours ago</p>
+                                <p className="Comment-para">{eachComment.comment}</p>
+                                {updateButton}
+                                {deleteButton}
+                                <hr></hr>
+                                
                             </li>
                         )
-                    })
+                    }).reverse()
                 }
+                </div>
+                
             </div >
         )
     }

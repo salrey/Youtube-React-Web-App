@@ -10,7 +10,18 @@ import LogIn  from './components/LogIn'
 import SignUp  from './components/SignUp'
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      isLoggedIn: false
+    }
+  }
 
+  handleLoggedIn = (bool) => {
+    this.setState({isLoggedIn: bool})
+    // window.location.reload(true)
+  }
+  
   renderVideo = props => {
     const { id } = props.match.params;
     return <Video currentID={id} />
@@ -18,15 +29,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
+      <div className="App"> 
+        <Nav LoggedIn={this.state.isLoggedIn}/>
+        <Switch> 
+          <Route exact path="/" component={Home}>
+          </Route>
           <Route path="/about" component={About} />
+          <Route path="/login">
+          <LogIn handleLoggedIn={this.handleLoggedIn}/>
+          </Route>
+          <Route path="/signup" component={SignUp}/>
           {/* PASS params as props USING react-router-dom V5 */}
           <Route path="/videos/:id" render={this.renderVideo} />
-          <Route path="/login" component={LogIn} />
-          <Route path="/signup" component={SignUp} />
+          
           {/* using react-router-dom V6 */}
           {/* <Route path="/videos/:id" element={<Video currentID={this.state.currentID}/>} /> */}
         </Switch>

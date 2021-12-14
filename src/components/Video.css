@@ -1,6 +1,11 @@
-.Video{
-    display: block;
-    margin: auto;
-    margin-top: 5vh;
-    margin-bottom: 25px;
+.Video-layout {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	height: 90vh;
+}
+.Video {
+	margin: auto;
+	text-align: center;
+	/* margin-top: 40px; */
+	grid-column: 1/3;
 }

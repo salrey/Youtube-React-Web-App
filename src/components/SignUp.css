@@ -1,0 +1,33 @@
+.Signup-form {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	height: 400px;
+	text-align: center;
+	align-items: center;
+	margin: auto;
+	margin-top: 100px;
+	border-radius: 10px;
+	background-color: rgb(212, 212, 212);
+}
+
+.Signup-Label {
+	margin-top: 20px;
+	font-size: 0.6cm;
+	color: black;
+}
+
+.Signup-input {
+	margin-bottom: 20px;
+	height: 30px;
+	width: 70%;
+}
+
+.Signup-submit {
+	margin-top: 20px;
+	width: 100px;
+}
+
+.Login-to-Signup {
+	margin: auto;
+}
