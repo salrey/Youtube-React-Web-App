@@ -20,9 +20,9 @@ class About extends Component {
                 </p>
                 <h2>Team</h2>
                 <ul>
-                    <li><a href="https://github.com/rosedurandisse">Rose Durandisse</a>:</li>
-                    <li><a href="https://github.com/RohanPursuit">Rohan Sterling</a>:</li>
                     <li><a href="https://github.com/salrey">Sal Reyes</a>: Full-Stack Software Engineer, entrepreneur and former banker, embracing advancements that are important to the salvation of the human race. I enjoy a diverse range of interests and fundamentally love to build companies, communities, and transformative experiences.</li>
+                    <li><a href="https://github.com/rosedurandisse">Rose Durandisse</a>: Full-Stack Engineer, digital marketing freelancer, and frequent traveler geared towards learning and creating a world in which opportunity and access are granted to anyone willing to learn.</li>
+                    <li><a href="https://github.com/RohanPursuit">Rohan Sterling</a>:</li>
                 </ul>
             </div>
         )
