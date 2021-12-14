@@ -12,8 +12,8 @@ class Video extends Component {
 
     render() {
         const opts = {
-            height: '390',
-            width: '640',
+            height: '500',
+            width: '900',
             playerVars: {
                 // https://developers.google.com/youtube/player_parameters
                 autoplay: 0,
@@ -21,14 +21,17 @@ class Video extends Component {
         };
 
         return (
-            <div>
-                <YouTube 
+            <div className='Video-layout'>
+                <div className='Video'>
+                    <YouTube 
                     className="Video"
                     videoId={this.props.currentID}
                     opts={opts}
                     onReady={this._onReady} />
-                <hr></hr>
-                <CommentSection videoId={this.props.currentID} />
+                </div>
+                
+                {/* <hr></hr> */}
+                <CommentSection className="Comments" videoId={this.props.currentID} />
             </div>
         )
     }
