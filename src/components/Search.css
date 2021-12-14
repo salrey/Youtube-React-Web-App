@@ -11,10 +11,11 @@
 }
 
 input.UserInput{
-	margin: 15px;
+	margin: 15px 0;
     height: 25px;
-    width: 50%;
-	border-radius: 5px;
+    width: 25%;
+	background-color: #6F6E6E;
+	border: 1px solid lightgray;
 	font-weight: 400;
 }
 
@@ -26,29 +27,38 @@ input.RegionCode{
 	margin: 15px;
     height: 25px;
     width: 10%;
-	border-radius: 5px;
 	font-weight: 400;
 }
 
 .Search input[type=text]:focus {
 	background-color: lightgray;
+	outline: none;
+}
+
+.Search button {
+	background: #C4C4C4; 
+	color: white;
+	padding: 5px 10px;
+	vertical-align: middle;
+	cursor: pointer;
+	border: none;
+
+}
+
+.Search button:hover {
+	background: red; 
+	color: black;
 }
 
 .Search input[type=submit] {
-	background: black; 
-	color: white;
-	width: auto;
-	padding:5px 15px;
-	cursor: pointer;
-	border-radius: 5px;
-	font-weight: 700;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-left: 5px;
+	background: none;
+	border: none;
+	color:#C4C4C4;
+	font-size: medium;
 }
-
 .Search input[type=submit]:hover {
-	background: red; 
-	color: black;
+	color: white;
 }
 
 .video-card {
@@ -65,24 +75,69 @@ input.RegionCode{
 }
 
 .video-card a:active{
-	color: red;
+	color: #434343;
 }
 
 .video-card:hover {
-	background-color: lightgray;
-	border-radius: 10px;
+	background-color: #434343;
 	text-decoration: underline;
 }
 
 .Search .default-message {
 	grid-column: 1/3;
 	text-align: center;
-	border: solid 1px lightgray;
-	width: 50%;
+	border: none;
+	width: 35%;
 	margin: auto;
 	padding: 15px 0;
-	background-color: lightgray;
+	background-color: #434343;
+	color: #F0F0F0;
+	border-radius: 20px;
+	font-weight: 400;
+}
+
+.favorites {
+	grid-column: span 2;
+	display:grid;
+	gap: 10px;
+	margin: 20px 35px;
+	border-top: 2px solid #484848;
+}
+
+.favorites h1 {
+	grid-column: span 4;
+	margin-left: 25px;
+	margin-bottom: 8px;
+	font-weight: 600;
+	font-size:x-large;
+}
+
+.favorites a:link{
 	color: black;
-	border-radius: 15px;
-	font-weight: 500;
+	text-decoration: none;
+}
+
+.favorites h3 {
+	font-size: medium;
+	text-align: center;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis ;
+}
+
+.favorites p {
+	font-size: small;
+}
+
+.fav-card {
+	width: 320px;
+	background-color: #C4C4C4;
+}
+
+.fav-card:hover {
+	background-color: lightgray;
+}
+
+.fav-info {
+	padding: 10px;
 }

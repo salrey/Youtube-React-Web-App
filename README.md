@@ -1,8 +1,12 @@
 # Youtube React Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this project, our team builds a front-end web app that recreates parts of YouTube.com. Our React application lets you search for YouTube videos, using YouTube’s API, and then choose a video from a list to watch. From there, you can view the selected video and add comments. 
 
-Check out our deployed solution [here](https://youtube-react-web-app.netlify.app/).
+Starting with create-react-app and npm to install packages, we create stateful components, customize the configuration of a component using props and develop a single page application using React Router. Lastly, we apply CSS styling to make a responsive and attractive application with a decent user interface.
+
+Throughout the project, our team collaborates via GitHub to manage the repository, Trello for our ticketing system, as well as Miro and Figma for the application’s flowchart and wireframe, respectively.
+
+Check out our deployed solution [here](https://youtube-react-web-app.netlify.app/)
 
 ### Team Lead
 - [@salrey](https://github.com/salrey)

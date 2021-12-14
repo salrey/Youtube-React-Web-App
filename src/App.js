@@ -1,13 +1,13 @@
 import './App.css';
 import { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import LogIn  from './components/LogIn'
-import SignUp  from './components/SignUp'
 
 import Nav from "./components/Nav"
 import Home from "./components/Home"
 import About from "./components/About"
 import Video from './components/Video';
+import LogIn  from './components/LogIn'
+import SignUp  from './components/SignUp'
 
 class App extends Component {
   constructor(){
@@ -26,21 +26,22 @@ class App extends Component {
     const { id } = props.match.params;
     return <Video currentID={id} />
   }
-  
+
   render() {
     return (
-      <div className="App">
+      <div className="App"> 
         <Nav LoggedIn={this.state.isLoggedIn}/>
         <Switch> 
           <Route exact path="/" component={Home}>
           </Route>
+          <Route path="/about" component={About} />
           <Route path="/login">
           <LogIn handleLoggedIn={this.handleLoggedIn}/>
           </Route>
           <Route path="/signup" component={SignUp}/>
-          <Route path="/about" component={About} />
           {/* PASS params as props USING react-router-dom V5 */}
           <Route path="/videos/:id" render={this.renderVideo} />
+          
           {/* using react-router-dom V6 */}
           {/* <Route path="/videos/:id" element={<Video currentID={this.state.currentID}/>} /> */}
         </Switch>
