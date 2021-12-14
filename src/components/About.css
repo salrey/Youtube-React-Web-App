@@ -19,13 +19,12 @@
 .team .profile {
     display: grid;
     text-align: center;
-    /* align-self:baseline; */
-    /* background-image: url("./salprofile.jpeg"); */
     background-color: lightgray; 
     color:gray;
     padding: 20px;
     height: 200px;
     gap: 20px 0px;
+    overflow-y: scroll;
 }
 
 .team .profile:hover {
@@ -40,8 +39,40 @@
 
 .team a:link {
     text-decoration: none;
+    color: gray;
 }
 
-.team a:link {
+.About hr {
+    margin: 30px 0px;
+    border: 1px solid #484848 ;
+}
+
+.project {
+    text-align: center;
+    background-color: gray; 
+    color:lightgray;
+    padding: 20px;
+    height: 320px;
+    margin-bottom: 40px;
+}
+
+.project:hover {
+    background-color: lightgray;
     color: gray;
+}
+
+.project h2 {
+    margin: 0px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 400;
+    color: lightgray;
+}
+
+.project #description {
+    padding: 0 50px;
+}
+
+.project a:link {
+    color: black
 }

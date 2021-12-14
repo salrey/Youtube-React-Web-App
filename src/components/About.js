@@ -42,20 +42,24 @@ class About extends Component {
                         </div>
                     </a>
                 </div>
+                <hr></hr>
                 <div className="project"> 
                     <h2>Youtube Project</h2>
-                    <p>
-                        In this project, our team builds a front-end web app that recreates parts of YouTube.com. Our React application lets you search for YouTube videos, using YouTube’s API, and then choose a video from a list to watch. From there, you can view the selected video and add comments. 
-                    </p>
-                    <p>
-                        Starting with create-react-app and npm to install packages, we create stateful components, customize the configuration of a component using props and develop a single page application using React Router. Lastly, we apply CSS styling to make a responsive and attractive application with a decent user interface.
-                    </p>
-                    <p>
-                        Throughout the project, our team collaborates via GitHub to manage the repository, Trello for our ticketing system, as well as Miro and Figma for the application’s flowchart and wireframe, respectively.
-                    </p>
-                    <p>
-                        For more, check out the GitHub repository for our app <a href="https://github.com/salrey/Youtube-React-Web-App">here</a>. 
-                    </p>
+                    <div>🚀</div>
+                    <div id="description">
+                        <p>
+                            In this project, our team builds a front-end web app that recreates parts of YouTube.com. Our React application lets you search for YouTube videos, using YouTube’s API, and then choose a video from a list to watch. From there, you can view the selected video and add comments. 
+                        </p>
+                        <p>
+                            Starting with create-react-app and npm to install packages, we create stateful components, customize the configuration of a component using props and develop a single page application using React Router. Lastly, we apply CSS styling to make a responsive and attractive application with a decent user interface.
+                        </p>
+                        <p>
+                            Throughout the project, our team collaborates via GitHub to manage the repository, Trello for our ticketing system, as well as Miro and Figma for the application’s flowchart and wireframe, respectively.
+                        </p>
+                        <p>
+                            For more, check out the GitHub repository for our app <a href="https://github.com/salrey/Youtube-React-Web-App">here</a>. 
+                        </p>
+                    </div>
                 </div>
             </div>
         )
